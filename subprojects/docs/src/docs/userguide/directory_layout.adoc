@@ -1,0 +1,60 @@
+// Copyright 2017 the original author or authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+[[directory_layout]]
+= Directory Layout
+
+[.lead]
+Gradle uses two main directories to perform and manage its work:
+
+`GRADLE_USER_HOME`::
+The Gradle user home directory defaults to `$USER_HOME/.gradle` unless set to a different location (see <<build_environment.adoc#build_environment, Build Environment>> for ways to do so).
+`PROJECT_DIR`::
+The project root directory of the current project.
+
+[[sec:gradle_user_home_directory]]
+== Gradle user home directory
+
+The Gradle user home directory has roughly the following structure:
+
+[listing]
+----
+.
+├── caches // <1>
+│   ├── 4.8 // <2>
+│   ├── 4.9 // <2>
+⋮   ⋮
+│   ├── jars-3 // <3>
+│   └── modules-2 // <3>
+├── daemon // <4>
+⋮   ⋮
+│   ├── 4.8
+│   └── 4.9
+├── gradle.properties // <5>
+├── init.d // <6>
+│   └── my-setup.gradle
+└── wrapper
+    └── dists // <7>
+        ⋮
+        ├── gradle-4.8-bin
+        ├── gradle-4.9-all
+        └── gradle-4.9-bin
+----
+<1> Global cache directory (for everything that's not project-specific)
+<2> Version-specific caches (e.g. to support incremental execution)
+<3> Shared caches (e.g. for artifacts of dependencies)
+<4> Registry and logs of the <<gradle_daemon.adoc#gradle_daemon, Gradle Daemon>>
+<5> Global <<build_environment.adoc#sec:gradle_configuration_properties,Gradle configuration properties>>
+<6> Global <<init_scripts.adoc#init_scripts, Initialization scripts>>
+<7> Distributions downloaded by the <<gradle_wrapper.adoc#gradle_wrapper,Gradle Wrapper>>

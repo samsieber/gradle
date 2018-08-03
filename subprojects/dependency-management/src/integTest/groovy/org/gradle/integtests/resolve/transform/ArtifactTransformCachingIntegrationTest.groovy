@@ -923,7 +923,8 @@ class ArtifactTransformCachingIntegrationTest extends AbstractHttpDependencyReso
 
         and:
         // start as new process so journal is not restored from in-memory cache
-        executer.withTasks("tasks").start().waitForFinish()
+        // executer.withTasks("tasks").start().waitForFinish()
+        succeeds("tasks")
 
         then:
         outputDir1.parentFile.assertDoesNotExist()
