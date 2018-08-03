@@ -48,6 +48,7 @@ public interface MutableVersionConstraint extends VersionConstraint {
     /**
      * Sets the required version of this module. Any other version constraints will be overriden.
      * @param version the preferred version of this module
+     * @since 4.11
      */
     void require(String version);
 
