@@ -27,6 +27,7 @@ dependencies {
     compile(library("groovy"))
 
     compile(project(":baseServices"))
+    compile(project(":core"))
     compile(project(":native"))
     compile(library("slf4j_api"))
     compile(library("guava"))
